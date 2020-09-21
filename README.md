@@ -4,7 +4,7 @@ An annotation driven field name and path generator.
 
 ## What does it do?
 
-It generates field names of a Java POJO as constants. 
+It generates field names of a POJO as constants. 
 Fieldr is also capable of generating field name paths derived from class graphs.
 
 ## Why do you need it?
@@ -36,7 +36,7 @@ then fieldr will generate a class `Facility_` where you can access the fieldname
 
 ```
 @Test
-public void testMongoIdFieldMongoStyle() {
+public void testSimpleFieldNames() {
     assertEquals("id", Facility_.id);
     assertEquals("owner", Facility_.owner);
     assertEquals("name", Facility_.name);
