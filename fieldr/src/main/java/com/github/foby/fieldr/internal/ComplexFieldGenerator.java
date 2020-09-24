@@ -4,13 +4,16 @@ public class ComplexFieldGenerator implements FieldGenerator {
 
     private String originalTypeName;
 
-    ComplexFieldGenerator(final String originalTypeName) {
+    private String fieldName;
+
+    ComplexFieldGenerator(final String fieldName, final String originalTypeName) {
+        this.fieldName = fieldName;
         this.originalTypeName = originalTypeName;
     }
 
     @Override public String generateFieldSpec(final String propertyName) {
         final String plainTypeName = getGeneratedFieldClassName();
-        return "public " + plainTypeName + " " + propertyName + " = new " + plainTypeName + "(withContext(\"" + propertyName + "\"));";
+        return "public " + plainTypeName + " " + propertyName + " = new " + plainTypeName + "(withContext(\"" + fieldName + "\"));";
     }
 
     @Override public String generateEntryPointFieldSpec(final String propertyName, final String generatedWrapperClassName) {

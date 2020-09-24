@@ -10,14 +10,14 @@ public class FieldGenerationTest {
 
     @Test
     public void testMongoIdFieldMongoStyle() {
-        assertEquals("_id", Facility_._id);
+        assertEquals("_id", Facility_.id);
     }
 
     @Test
     public void testFieldsPath() {
-        assertEquals("contact_person.email", Facility_.contact_person.email);
-        assertEquals("contact_person.user_location", Facility_.contact_person.user_location.toString());
-        assertEquals("contact_person.user_location.city", Facility_.contact_person.user_location.city);
+        assertEquals("contact_person.email", Facility_.contactPerson.email);
+        assertEquals("contact_person.user_location", Facility_.contactPerson.userLocation.toString());
+        assertEquals("contact_person.user_location.city", Facility_.contactPerson.userLocation.city);
     }
 
     @Test

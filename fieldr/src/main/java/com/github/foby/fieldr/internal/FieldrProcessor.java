@@ -21,6 +21,7 @@ import javax.lang.model.element.TypeElement;
 import javax.tools.Diagnostic;
 import javax.tools.JavaFileObject;
 
+import org.apache.commons.lang3.tuple.ImmutablePair;
 import org.springframework.data.annotation.Id;
 import org.springframework.data.mongodb.core.mapping.Field;
 
@@ -64,13 +65,13 @@ public class FieldrProcessor extends AbstractProcessor {
                 .filter(field -> !field.getModifiers().contains(Modifier.FINAL))
                 .forEach(field -> {
 
-                    final String fieldName = getFieldName(field);
+                    final ImmutablePair<String,String> propertyAndFieldName = getFieldName(field);
                     final String type = field.asType().toString();
 
                     if (generatedTypes.contains(type)) {
-                        fieldModel.put(fieldName, new ComplexFieldGenerator(type));
+                        fieldModel.put(propertyAndFieldName.getLeft(), new ComplexFieldGenerator(propertyAndFieldName.getRight(), type));
                     } else {
-                        fieldModel.put(fieldName, new SimpleFieldGenerator());
+                        fieldModel.put(propertyAndFieldName.getLeft(), new SimpleFieldGenerator(propertyAndFieldName.getRight()));
                     }
                 });
         final String packageName = Optional.ofNullable(element.getEnclosingElement())
@@ -86,14 +87,14 @@ public class FieldrProcessor extends AbstractProcessor {
         return fieldsClassModel;
     }
 
-    private static String getFieldName(final Element field) {
+    private static ImmutablePair<String,String> getFieldName(final Element field) {
         final String defaultFieldName = field.getSimpleName().toString();
         final Field fieldAnnotation = field.getAnnotation(Field.class);
         final Id idAnnotation = field.getAnnotation(Id.class);
 
         if (idAnnotation != null && "id".equals(defaultFieldName)) {
             // FIXME: this is mongodb specific. make configurable in @GenerateFieldNames.
-            return "_id";
+            return ImmutablePair.of("id","_id");
         }
 
         final String fieldNameByMongoAnnotation = Optional.ofNullable(fieldAnnotation)
@@ -108,7 +109,8 @@ public class FieldrProcessor extends AbstractProcessor {
                 .orElse(null);
 
         return Optional.ofNullable(fieldNameByMongoAnnotation)
-                .orElse(defaultFieldName);
+                .map(s -> ImmutablePair.of(defaultFieldName, s))
+                .orElse(ImmutablePair.of(defaultFieldName, defaultFieldName));
     }
 
     private void generateFieldsSourceFile(final FieldsClassModel fieldsClassModel) {
