@@ -5,8 +5,36 @@
 
     <groupId>com.github.foby</groupId>
     <artifactId>fieldr-parent</artifactId>
+    <name>Fieldr</name>
+    <description>Annotation driven field name and path generator</description>
     <packaging>pom</packaging>
     <version>0.1</version>
+    <url>https://github.com/foby/fieldr</url>
+
+    <scm>
+        <connection>scm:git:git@github.com:foby/fieldr.git</connection>
+        <developerConnection>scm:git:git@github.com:foby/fieldr.git</developerConnection>
+        <url>https://github.com/foby/fieldr</url>
+        <tag>HEAD</tag>
+    </scm>
+
+    <licenses>
+        <license>
+            <name>MIT License</name>
+            <url>http://www.opensource.org/licenses/mit-license.php</url>
+            <distribution>repo</distribution>
+        </license>
+    </licenses>
+
+    <developers>
+        <developer>
+            <name>Andreas Pasch</name>
+            <email>foby@gmx.net</email>
+            <organization>Github</organization>
+            <organizationUrl>https://github.com/foby</organizationUrl>
+        </developer>
+    </developers>
+
     <modules>
         <module>fieldr</module>
         <module>fieldr-user</module>
@@ -21,4 +49,15 @@
         <spring-data-mongodb.version>3.0.3.RELEASE</spring-data-mongodb.version>
     </properties>
 
+    <distributionManagement>
+        <snapshotRepository>
+            <id>ossrh</id>
+            <url>https://oss.sonatype.org/content/repositories/snapshots</url>
+        </snapshotRepository>
+        <repository>
+            <id>ossrh</id>
+            <url>https://oss.sonatype.org/service/local/staging/deploy/maven2/
+            </url>
+        </repository>
+    </distributionManagement>
 </project>
