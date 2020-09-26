@@ -8,7 +8,7 @@
     <name>Fieldr</name>
     <description>Annotation driven field name and path generator</description>
     <packaging>pom</packaging>
-    <version>0.1</version>
+    <version>0.1-SNAPSHOT</version>
     <url>https://github.com/foby/fieldr</url>
 
     <scm>
@@ -68,6 +68,7 @@
                 <artifactId>maven-release-plugin</artifactId>
                 <version>2.5.3</version>
                 <configuration>
+                    <autoVersionSubmodules>true</autoVersionSubmodules>
                     <localCheckout>true</localCheckout>
                     <pushChanges>false</pushChanges>
                     <mavenExecutorId>forked-path</mavenExecutorId>
