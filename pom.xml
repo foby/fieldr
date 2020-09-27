@@ -1,6 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
-    xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
     <modelVersion>4.0.0</modelVersion>
 
     <groupId>com.github.foby</groupId>
@@ -8,14 +7,14 @@
     <name>Fieldr</name>
     <description>Annotation driven field name and path generator</description>
     <packaging>pom</packaging>
-    <version>0.1-SNAPSHOT</version>
+    <version>0.1</version>
     <url>https://github.com/foby/fieldr</url>
 
     <scm>
         <connection>scm:git:git@github.com:foby/fieldr.git</connection>
         <developerConnection>scm:git:git@github.com:foby/fieldr.git</developerConnection>
         <url>https://github.com/foby/fieldr</url>
-        <tag>HEAD</tag>
+        <tag>0.1</tag>
     </scm>
 
     <licenses>
