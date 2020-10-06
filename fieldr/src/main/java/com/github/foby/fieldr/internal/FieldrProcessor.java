@@ -132,7 +132,10 @@ public class FieldrProcessor extends AbstractProcessor {
                 out.println("public " + generatedFieldsClassName + "(final String context) { super(context); }");
                 out.println();
 
-                fieldsClassModel.fieldModel.forEach((propName, fieldGenerator) -> out.println(fieldGenerator.generateFieldSpec(propName)));
+                fieldsClassModel.fieldModel.forEach((propName, fieldGenerator) -> {
+                    out.println(fieldGenerator.generateFieldSpec(propName));
+                    out.println(fieldGenerator.generateFieldSpecReference(propName));
+                });
 
                 out.println("  public String toString() { return java.util.Optional.ofNullable(this.context).orElse(\"\"); }");
 
@@ -164,8 +167,10 @@ public class FieldrProcessor extends AbstractProcessor {
 
                 final String generatedFieldsClassName = simpleClassName + "Fields";
                 fieldsClassModel.fieldModel
-                        .forEach((propName, fieldGenerator) -> out.println(
-                                fieldGenerator.generateEntryPointFieldSpec(propName, generatedFieldsClassName)));
+                        .forEach((propName, fieldGenerator) -> {
+                            out.println(fieldGenerator.generateEntryPointFieldSpec(propName, generatedFieldsClassName));
+                            out.println(fieldGenerator.generateEntryPointFieldSpecReference(propName, generatedFieldsClassName));
+                        });
 
                 out.println("}");
             }

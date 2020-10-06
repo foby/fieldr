@@ -16,9 +16,19 @@ public class ComplexFieldGenerator implements FieldGenerator {
         return "public " + plainTypeName + " " + propertyName + " = new " + plainTypeName + "(withContext(\"" + fieldName + "\"));";
     }
 
+    @Override public String generateFieldSpecReference(final String propertyName) {
+        final String plainTypeName = getGeneratedFieldClassName();
+        return "public " + plainTypeName + " $" + propertyName + " = new " + plainTypeName + "(withContext(\"$" + fieldName + "\"));";
+    }
+
     @Override public String generateEntryPointFieldSpec(final String propertyName, final String generatedWrapperClassName) {
         final String plainTypeName = getGeneratedFieldClassName();
         return "public static " + plainTypeName +  " " + propertyName + " = new " + generatedWrapperClassName + "(null)." + propertyName + ";";
+    }
+
+    @Override public String generateEntryPointFieldSpecReference(final String propertyName, final String generatedWrapperClassName) {
+        final String plainTypeName = getGeneratedFieldClassName();
+        return "public static " + plainTypeName +  " $" + propertyName + " = new " + generatedWrapperClassName + "(null).$" + propertyName + ";";
     }
 
     private String getGeneratedFieldClassName() {

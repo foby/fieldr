@@ -12,7 +12,15 @@ public class SimpleFieldGenerator implements FieldGenerator {
         return "public String " + propertyName + " = withContext(\"" + fieldName + "\");";
     }
 
+    @Override public String generateFieldSpecReference(final String propertyName) {
+        return "public String $" + propertyName + " = withContext(\"$" + fieldName + "\");";
+    }
+
     @Override public String generateEntryPointFieldSpec(final String propertyName, final String generatedWrapperClassName) {
         return "public static String " + propertyName + " = new " + generatedWrapperClassName + "(null)." + propertyName + ";";
+    }
+
+    @Override public String generateEntryPointFieldSpecReference(final String propertyName, final String generatedWrapperClassName) {
+        return "public static String $" + propertyName + " = new " + generatedWrapperClassName + "(null).$" + propertyName + ";";
     }
 }
