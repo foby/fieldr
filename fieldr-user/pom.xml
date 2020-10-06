@@ -3,12 +3,12 @@
     <parent>
         <artifactId>fieldr-parent</artifactId>
         <groupId>com.github.foby</groupId>
-        <version>0.2-SNAPSHOT</version>
+        <version>0.2</version>
     </parent>
     <modelVersion>4.0.0</modelVersion>
     <name>Fieldr Examples</name>
     <artifactId>fieldr-user</artifactId>
-    <version>0.2-SNAPSHOT</version>
+    <version>0.2</version>
 
     <dependencies>
         <dependency>

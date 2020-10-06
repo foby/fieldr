@@ -7,14 +7,14 @@
     <name>Fieldr</name>
     <description>Annotation driven field name and path generator</description>
     <packaging>pom</packaging>
-    <version>0.2-SNAPSHOT</version>
+    <version>0.2</version>
     <url>https://github.com/foby/fieldr</url>
 
     <scm>
         <connection>scm:git:git@github.com:foby/fieldr.git</connection>
         <developerConnection>scm:git:git@github.com:foby/fieldr.git</developerConnection>
         <url>https://github.com/foby/fieldr</url>
-        <tag>HEAD</tag>
+        <tag>0.2</tag>
     </scm>
 
     <licenses>
