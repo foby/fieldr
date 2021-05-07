@@ -6,7 +6,11 @@ public interface FieldGenerator {
 
     String generateFieldSpecReference(final String propertyName);
 
+    String generateFieldConstant(final String propertyName);
+
     String generateEntryPointFieldSpec(final String propertyName, final String generatedWrapperClassName);
 
     String generateEntryPointFieldSpecReference(final String propertyName, final String generatedWrapperClassName);
+
+    String generateEntryPointFieldConstant(final String propertyName, final String generatedWrapperClassName);
 }

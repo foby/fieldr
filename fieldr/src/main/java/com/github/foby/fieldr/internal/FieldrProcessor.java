@@ -133,6 +133,7 @@ public class FieldrProcessor extends AbstractProcessor {
                 out.println();
 
                 fieldsClassModel.fieldModel.forEach((propName, fieldGenerator) -> {
+                    out.println(fieldGenerator.generateFieldConstant(propName));
                     out.println(fieldGenerator.generateFieldSpec(propName));
                     out.println(fieldGenerator.generateFieldSpecReference(propName));
                 });
@@ -168,6 +169,7 @@ public class FieldrProcessor extends AbstractProcessor {
                 final String generatedFieldsClassName = simpleClassName + "Fields";
                 fieldsClassModel.fieldModel
                         .forEach((propName, fieldGenerator) -> {
+                            out.println(fieldGenerator.generateEntryPointFieldConstant(propName, generatedFieldsClassName));
                             out.println(fieldGenerator.generateEntryPointFieldSpec(propName, generatedFieldsClassName));
                             out.println(fieldGenerator.generateEntryPointFieldSpecReference(propName, generatedFieldsClassName));
                         });

@@ -30,5 +30,12 @@ public class FieldGenerationTest {
     public void testMongodbReferences() {
         assertEquals("$createdDate", Facility_.$createdDate);
         assertEquals("$contact_person.name", Facility_.$contactPerson.name);
+        assertEquals("customer_id", Facility_.customerId);
+    }
+
+    @Test
+    public void testConstants() {
+        assertEquals("createdDate", Facility_.CREATED_DATE);
+        assertEquals("customer_id", Facility_.CUSTOMER_ID);
     }
 }
