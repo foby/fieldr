@@ -89,11 +89,12 @@ public class FieldrProcessor extends AbstractProcessor {
 
     private static ImmutablePair<String,String> getFieldName(final Element field) {
         final String defaultFieldName = field.getSimpleName().toString();
+
+        // FIXME: extract MongoDB specifics
         final Field fieldAnnotation = field.getAnnotation(Field.class);
         final Id idAnnotation = field.getAnnotation(Id.class);
 
-        if (idAnnotation != null && "id".equals(defaultFieldName)) {
-            // FIXME: this is mongodb specific. make configurable in @GenerateFieldNames.
+        if (null != idAnnotation) {
             return ImmutablePair.of("id","_id");
         }
 
